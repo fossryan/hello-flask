@@ -21,24 +21,34 @@
             text-align: center center;
             font-size: 25px;
             border: 1px solid #ddd;
-            padding: 20px;
+            padding: 35px;
             border-radius: 15px;
-            border-color: green;
+            border-color: rgb(255, 255, 255);
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
         }
         input[type="text"] {
             width: 50px;
-            padding: 5px;
-            margin: 10px 0;
+            padding: 10px;
+            margin: 15px 0;
             border: 15px;
             border-radius: 5px;
             border-color: white;
             background-color:rgba(255, 255, 255, .4);
             font-size: 24px;
         }
-        button {
+        button.sub {
+            float: left;
             padding: 10px 20px;
             background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        button.quit {
+            float: right;
+            padding: 10px 20px;
+            background-color: #8b2838;
             color: white;
             border: none;
             border-radius: 5px;
@@ -60,6 +70,10 @@
             font-size: 40px;
     
         }
+        p {color: rgb(255, 255, 255);
+            font-size: 30px;
+    
+        }
     </style>
 </head>
 <body>
@@ -70,14 +84,14 @@
         <form method="POST">
             <input type="text" name="answer" placeholder="Your answer" autofocus>
             <br>
-            <button type="submit">Submit</button>
+            <button type="submit" class="sub">Submit</button>
+            <button type="submit" name="quit" class="quit">Quit</button>
           </form>
         <p class="{{ message_class }}">{{ message }}</p>
         {% if previous_question %}
             <p><strong>Previous Question:</strong> {{ previous_question }}</p>
             <p><strong>Correct Answer:</strong> {{ correct_answer }}</p>
         {% endif %}
-        <button type="submit" name="quit">Quit</button>
     </div>
 </body>
 </html>
