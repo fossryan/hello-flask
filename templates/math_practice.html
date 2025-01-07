@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Math Practice</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
     <style>
         body {
             background-image: url("static/images/alexmath.jpg");
@@ -14,7 +15,6 @@
             text-align: center;
             margin: 150px;
         }
-
         .container {
             display: inline-block;
             background:rgba(0, 0, 0, .4);
@@ -26,17 +26,6 @@
             border-color: green;
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
         }
-        
-        h1 {color: white;
-        }
-
-        h2 {color: white;
-            font-size: 40px;
-    
-        }
-
-
-
         input[type="text"] {
             width: 50px;
             padding: 5px;
@@ -50,6 +39,7 @@
         button {
             padding: 10px 20px;
             background-color: #4CAF50;
+            color: white;
             border: none;
             border-radius: 5px;
             cursor: pointer;
@@ -58,27 +48,36 @@
             background-color: #45a049;
         }
         .correct {
-            color: yellowgreen;
-            font-size: 24px;
+            color: green;
         }
         .incorrect {
-            color: rgb(229, 59, 59);
-            font-size: 24px;
+            color: red;
+        }
+        h1 {color: white;
+        }
+
+        h2 {color: white;
+            font-size: 40px;
+    
         }
     </style>
 </head>
 <body>
     <div class="container">
         <h1>MATH PRACTICE!</h1>
-        <p>Solve this problem:</p>
+        <p>SOLVE THIS PROBLEM:</p>
         <h2>{{ problem }}</h2>
         <form method="POST">
             <input type="text" name="answer" placeholder="Your answer" autofocus>
             <br>
             <button type="submit">Submit</button>
-        </form>
+          </form>
         <p class="{{ message_class }}">{{ message }}</p>
+        {% if previous_question %}
+            <p><strong>Previous Question:</strong> {{ previous_question }}</p>
+            <p><strong>Correct Answer:</strong> {{ correct_answer }}</p>
+        {% endif %}
+        <button type="submit" name="quit">Quit</button>
     </div>
 </body>
 </html>
-
