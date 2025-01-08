@@ -16,6 +16,7 @@
             margin: 150px;
         }
         .container {
+            margin: auto;
             display: inline-block;
             background:rgba(0, 0, 0, .4);
             text-align: center center;
@@ -27,7 +28,8 @@
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
         }
         input[type="text"] {
-            width: 50px;
+            margin:auto;
+            width: 75px;
             padding: 10px;
             margin: 15px 0;
             border: 15px;
@@ -37,6 +39,7 @@
             font-size: 24px;
         }
         button.sub {
+            opacity: 0;
             float: left;
             padding: 10px 20px;
             background-color: #4CAF50;
@@ -47,21 +50,25 @@
         }
         button.quit {
             float: right;
-            padding: 10px 20px;
-            background-color: #8b2838;
+            padding: 10px 30px;
+            background-color: #af2c42;
             color: white;
             border: none;
             border-radius: 5px;
             cursor: pointer;
         }
         button:hover {
-            background-color: #45a049;
+            background-color: #e15f50;
         }
         .correct {
-            color: green;
+            padding-top: 5px;
+            padding-bottom: 5px;
+            color: rgb(42, 230, 42);
         }
         .incorrect {
-            color: red;
+            padding-top: 5px;
+            padding-bottom: 5px;
+            color: rgb(235, 58, 58);
         }
         h1 {color: white;
         }
@@ -82,16 +89,18 @@
         <p>SOLVE THIS PROBLEM:</p>
         <h2>{{ problem }}</h2>
         <form method="POST">
-            <input type="text" name="answer" placeholder="Your answer" autofocus>
+            <input type="text" name="answer" placeholder="" autofocus>
             <br>
             <button type="submit" class="sub">Submit</button>
-            <button type="submit" name="quit" class="quit">Quit</button>
           </form>
         <p class="{{ message_class }}">{{ message }}</p>
         {% if previous_question %}
             <p><strong>Previous Question:</strong> {{ previous_question }}</p>
             <p><strong>Correct Answer:</strong> {{ correct_answer }}</p>
         {% endif %}
+        <form method="POST">
+        <button type="submit" name="quit" class="quit">Quit</button>
+        </form>
     </div>
 </body>
 </html>
