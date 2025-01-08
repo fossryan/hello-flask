@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Goodbye</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin: 50px;
+        }
+        .chart-container {
+            width: 50%;
+            margin: 0 auto;
+        }
+    </style>
+</head>
+<body>
+    <h1>GREAT JOB!</h1>
+    <p>Thank you for practicing math! Here are your results:</p>
+    <p><strong>Correct Answers:</strong> {{ correct_count }}</p>
+    <p><strong>Incorrect Answers:</strong> {{ incorrect_count }}</p>
+
+    <div class="chart-container">
+        <canvas id="resultsChart"></canvas>
+    </div>
+
+    <script>
+        const ctx = document.getElementById('resultsChart').getContext('2d');
+        const resultsChart = new Chart(ctx, {
+            type: 'bar',
+            data: {
+                labels: ['Correct', 'Incorrect'],
+                datasets: [{
+                    label: 'Number of Answers',
+                    data: [{{ correct_count }}, {{ incorrect_count }}],
+                    backgroundColor: ['green', 'red'],
+                    borderColor: ['darkgreen', 'darkred'],
+                    borderWidth: 1
+                }]
+            },
+            options: {
+                scales: {
+                    y: {
+                        beginAtZero: true
+                    }
+                }
+            }
+        });
+    </script>
+</body>
+</html>
